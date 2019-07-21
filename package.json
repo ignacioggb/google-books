@@ -1,7 +1,7 @@
 {
-  "name": "nyt-google-books-search",
+  "name": "google-books-search",
   "version": "1.0.0",
-  "description": "NYT Google Books Search",
+  "description": "Google Books Search",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

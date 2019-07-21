@@ -53,8 +53,7 @@ class Results extends Component {
           </p>
         </Navbar>
         <Container>
-        <img src="./img/Google_Books_logo_2015.png" />
-       
+        <img src="./img/Google_Books_logo_2015.png"/>
           <hr className="my-4" />
           <Link to="/">No results - click here to search again.<i class="fa fa-arrow-left" aria-hidden="true"></i></Link>
         </Container>
@@ -87,10 +86,11 @@ class Results extends Component {
                   >
                     {book.volumeInfo.title}
                   </a>
-                    <p>Author: {book.volumeInfo.authors[0]}</p>
+                  {typeof book.volumeInfo.authors != "undefined" ? (<p className="card-text">By: {book.volumeInfo.authors.join(", ")}</p>) : (<p>Authors Not Available</p>)}
                   <p>
                   <img align="left" style={{paddingRight:10}}
-                    src={book.volumeInfo.imageLinks.smallThumbnail} alt="new"
+                 
+                    src= {typeof book.volumeInfo.imageLinks.smallThumbnail != "undefined" ?  (book.volumeInfo.imageLinks.smallThumbnail) : ("https://res.cloudinary.com/teepublic/image/private/s--NWxFjHLj--/t_Preview/b_rgb:768e9a,c_limit,f_jpg,h_630,q_90,w_630/v1539384919/production/designs/3309274_0.jpg")} alt="new"
                   />
                     {book.volumeInfo.description}
                   </p>
@@ -101,11 +101,11 @@ class Results extends Component {
                     btntype="info"
                     disabled={book.volumeInfo.infoLink === "/"}
                     onClick={() => this.saveBook({
-                      title: book.volumeInfo.title,
                       author: book.volumeInfo.authors[0],
                       description: book.volumeInfo.description,
                       image: book.volumeInfo.imageLinks.smallThumbnail,
                       link: book.volumeInfo.infoLink,
+                      title: book.volumeInfo.title,
                       _id: book.id
                     })}
                   >
